@@ -1,4 +1,4 @@
-package com.yzl.test;
+package com.yzl.util;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:conf/applicationContext.xml" })
-public class TestUser {
+public class TestDemo {
 
 	@Test
 	public void testUser() {
