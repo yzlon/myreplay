@@ -1,0 +1,7 @@
+配置activeMQ
+	建立真正的JMS服务商提供的ConnectionFactory
+	建立spring的ConnectionFactory来管理jms服务商提供的真正的ConnecitonFactory
+	建立spring的工具类JmsTemplate,它可以进行消息发送、接收
+	建立消息传输的目的地址MQQUEUE destination
+	建立生产者
+	建立消费者
