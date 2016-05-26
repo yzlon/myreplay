@@ -1,17 +1,12 @@
 package com.yzl.consumer.handler;
 
-import javax.annotation.Resource;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
-
-import org.apache.activemq.transaction.Synchronization;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
-import com.yzl.consumer.ConsumerMessageListener;
 import com.yzl.db.entity.HFmtCode;
 import com.yzl.db.entity.extend.FmtCode;
 import com.yzl.util.Constants;
@@ -19,13 +14,13 @@ import com.yzl.vo.TransMessage;
 
 @Component("messageHandler")
 public class MessageHandlerDBImpl implements IMessageHandler {
-	private int num = 0;
+	private final static Logger logger = LoggerFactory.getLogger(MessageHandlerDBImpl.class);
 	private static int objNums = 0;
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public MessageHandlerDBImpl(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
-		objNumAdd();
+		// objNumAdd();
 	}
 
 	public MessageHandlerDBImpl() {
@@ -53,10 +48,8 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 			} catch (JMSException e) {
 				e.printStackTrace();
 			}
-			System.out.println(transMessage.toString());
-			System.out.println(message.toString());
 		} else {
-			System.out.println("not ObjectMessage");
+			logger.error("not ObjectMessage");
 		}
 	}
 

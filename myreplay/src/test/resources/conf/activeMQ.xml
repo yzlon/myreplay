@@ -29,13 +29,8 @@
 			<value>QL_FMT_CODE</value>
 		</constructor-arg>
 	</bean>
-	<!-- 消息存储句柄 -->
-	<bean id="messageHandler" class="com.yzl.consumer.handler.MessageHandlerDBImpl" />
 	<!-- 消息监听器 -->
-	<bean id="consumerMessageListener" class="com.yzl.consumer.ConsumerMessageListener">
-		<constructor-arg index="0" value="100" />
-		<constructor-arg index="1" ref="messageHandler" />
-	</bean>
+	<bean id="consumerMessageListener" class="com.yzl.consumer.ConsumerMessageListener" />
 	<!-- spring提供的消息监听容器 -->
 	<bean id="jmsContainer"
 		class="org.springframework.jms.listener.DefaultMessageListenerContainer">

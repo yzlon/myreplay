@@ -1,11 +1,12 @@
 package com.yzl.producer;
 
-import javax.annotation.Resource;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
@@ -16,6 +17,8 @@ import com.yzl.vo.TransMessage;
 
 @Component("producer")
 public class ProducerServiceImpl implements ProducerService {
+	private final static Logger logger = LoggerFactory.getLogger(ProducerServiceImpl.class);
+
 	@Autowired
 	private JmsTemplate jmsTemplate = null;
 
@@ -28,7 +31,7 @@ public class ProducerServiceImpl implements ProducerService {
 		this.jmsTemplate.send(this.destination, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				System.out.println("send message******" + transMessage.toString());
+				System.out.println("send message:" + transMessage.toString());
 				return session.createObjectMessage(transMessage);
 			}
 		});
