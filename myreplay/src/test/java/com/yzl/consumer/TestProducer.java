@@ -33,7 +33,7 @@ public class TestProducer {
 			transMessage.setMsgSeq(new Random().nextInt(10000000));
 			transMessage.setRecvTimeStamp("recvTimeStamp:22:30");
 			transMessage.setRespTimeStamp("respTimeStamp:23:30");
-			producer.sendMessage(transMessage);
+			//producer.sendMessage(transMessage);
 			endTime = new Date().getTime();
 			if (endTime - begTime > 100000 * 1000) {
 				flag = false;

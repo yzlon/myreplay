@@ -37,5 +37,6 @@
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="destination" ref="queueDestination" />
 		<property name="messageListener" ref="consumerMessageListener" />
+		<!-- <property name="autoStartup" value="false" /> -->
 	</bean>
 </beans>
