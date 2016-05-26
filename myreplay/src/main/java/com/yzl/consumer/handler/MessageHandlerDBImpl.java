@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.yzl.consumer.ConsumerMessageListener;
 import com.yzl.db.entity.HFmtCode;
 import com.yzl.db.entity.extend.FmtCode;
+import com.yzl.util.Constants;
 import com.yzl.vo.TransMessage;
 
 @Component("messageHandler")
@@ -44,9 +45,9 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 				fmtCode.setMsgSeq(transMessage.getMsgSeq());
 				fmtCode.setResponseTime(transMessage.getRespTimeStamp());
 				fmtCode.setRequestTime(transMessage.getRecvTimeStamp());
-				fmtCode.setDiffCode("0");
-				fmtCode.setFlag("0");
-				fmtCode.setStatus("0");
+				fmtCode.setDiffCode(Constants.H_FMT_CODE_STATUS_DEFAULT);
+				fmtCode.setFlag(Constants.H_FMT_CODE_FLAG_DEFAULT);
+				fmtCode.setStatus(Constants.H_FMT_CODE_STATUS_DEFAULT);
 				int i = sqlSessionTemplate.insert("HFmtCodeMapper.insert", fmtCode);
 				System.out.println("成功插入数据：" + i + " 条");
 			} catch (JMSException e) {

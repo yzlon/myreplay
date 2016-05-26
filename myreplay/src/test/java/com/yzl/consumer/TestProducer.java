@@ -24,7 +24,7 @@ public class TestProducer {
 		long begTime = new Date().getTime();
 		long endTime = begTime;
 
-//		while (flag) {
+		while (flag) {
 			TransMessage transMessage = new TransMessage();
 			transMessage.setUuid("uuid:" + new Random().nextInt(100000000));
 			transMessage.setTranCode("tranCode:" + Math.random() * 10000);
@@ -35,9 +35,9 @@ public class TestProducer {
 			transMessage.setRespTimeStamp("respTimeStamp:23:30");
 			producer.sendMessage(transMessage);
 			endTime = new Date().getTime();
-			if (endTime - begTime > 1 * 1000) {
+			if (endTime - begTime > 100000 * 1000) {
 				flag = false;
 			}
-//		}
+		}
 	}
 }
