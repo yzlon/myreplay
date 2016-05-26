@@ -5,3 +5,32 @@
 	建立消息传输的目的地址MQQUEUE destination
 	建立生产者
 	建立消费者
+
+mybatis-spring配置：
+SqlSessionFactoryBean  
+	在基本的 MyBatis 中,session 工厂可以使用 SqlSessionFactoryBuilder 来创建。
+	而在 MyBatis-Spring 中,则使用 SqlSessionFactoryBean 来替代。 
+	属性：
+		dataSource（必须的属性）
+			例如：<property name="dataSource" ref="dataSource" />
+		configLocation:指定mybatis的xml配置
+			例如：<property name="configLocation" value="classpath:conf/mybatis-config.xml"/>
+		mapperLocations：指定mybatis的xml映射器的位置
+			例如：<property name="mapperLocations" value="classpath*:sample/config/mappers/**/*.xml" />
+		transactionFactory:事务管理器
+	配置：
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="configLocation" value="classpath:conf/mybatis-config.xml"/>
+	    <property name="mapperLocations" value="classpath*:sample/config/mappers/**/*.xml" />
+	</bean>
+SqlSession
+	在 MyBatis 中,你可以使用 SqlSessionFactory 来创建 SqlSession。一旦你获得一个 session 之后,你可以使用它来执行映射语句,提交或回滚连接,最后,当不再需要它的时 候, 你可以关闭 session。 
+	使用 MyBatis-Spring 之后, 你不再需要直接使用 SqlSessionFactory 了,因为你的 bean 可以通过一个线程安全的 SqlSession 来注入,基于 Spring 的事务配置 来自动提交,回滚,关闭 session。
+SqlSessionTemplate 
+	SqlSessionTemplate 是 MyBatis-Spring 的核心。 这个类负责管理 MyBatis 的 SqlSession, 调用 MyBatis 的 SQL 方法, 翻译异常。 
+	SqlSessionTemplate 是线程安全的, 可以被多个 DAO 所共享使用。
+	配置：
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	    <constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>

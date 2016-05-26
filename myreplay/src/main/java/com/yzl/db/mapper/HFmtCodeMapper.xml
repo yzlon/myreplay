@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.yzl.db.mapper.HFmtCodeMapper"> -->
+<mapper namespace="HFmtCodeMapper">
+	<insert id="insert" parameterType="HFmtCode">
+		insert into H_FMT_CODE (UUID,
+		TRAN_CODE, MSG_SEQ, REQUEST_TIME,
+		RESPONSE_TIME, FLAG,
+		STATUS,
+		DIFF_CODE)
+		values (#{uuid}, #{tranCode}, #{msgSeq}, #{requestTime},
+		#{responseTime},#{flag}, #{status}, #{diffCode})
+	</insert>
+</mapper>

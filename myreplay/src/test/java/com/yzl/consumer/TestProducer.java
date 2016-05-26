@@ -1,5 +1,6 @@
 package com.yzl.consumer;
 
+import java.util.Date;
 import java.util.Random;
 
 import org.junit.Test;
@@ -19,7 +20,11 @@ public class TestProducer {
 
 	@Test
 	public void testProducer() {
-		for (int i = 0; i < 20; i++) {
+		boolean flag = true;
+		long begTime = new Date().getTime();
+		long endTime = begTime;
+
+//		while (flag) {
 			TransMessage transMessage = new TransMessage();
 			transMessage.setUuid("uuid:" + new Random().nextInt(100000000));
 			transMessage.setTranCode("tranCode:" + Math.random() * 10000);
@@ -29,12 +34,10 @@ public class TestProducer {
 			transMessage.setRecvTimeStamp("recvTimeStamp:22:30");
 			transMessage.setRespTimeStamp("respTimeStamp:23:30");
 			producer.sendMessage(transMessage);
-			try {
-				Thread.sleep(3 * 1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			endTime = new Date().getTime();
+			if (endTime - begTime > 1 * 1000) {
+				flag = false;
 			}
-		}
+//		}
 	}
 }
