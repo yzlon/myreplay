@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.messaging.MessageHandler;
 
 import com.yzl.consumer.handler.MessageHandlerDBImpl;
 import com.yzl.util.Constants;

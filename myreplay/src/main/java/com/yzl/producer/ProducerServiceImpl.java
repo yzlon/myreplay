@@ -1,8 +1,6 @@
 package com.yzl.producer;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 

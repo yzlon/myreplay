@@ -1,7 +1,5 @@
 package com.yzl.db.entity;
 
-import java.io.Serializable;
-
 public class HTranRule {
 	private int id;
 

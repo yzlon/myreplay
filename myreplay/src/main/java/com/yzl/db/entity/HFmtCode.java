@@ -1,7 +1,5 @@
 package com.yzl.db.entity;
 
-import java.io.Serializable;
-
 public class HFmtCode {
 	private String diffCode;
 

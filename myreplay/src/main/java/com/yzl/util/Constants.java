@@ -1,7 +1,5 @@
 package com.yzl.util;
 
-import java.io.File;
-
 public class Constants {
 	public final static int DEFAULT_HANDLER_POOL_NUMBERS = 50;
 	public final static String H_FMT_CODE_STATUS_DEFAULT = "0";/* ´¦Àí×´Ì¬ */
