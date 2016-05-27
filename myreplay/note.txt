@@ -34,3 +34,9 @@ SqlSessionTemplate
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 	    <constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+	
+配置mybatis的时候：	
+	<typeAliases>
+	<!--		<package name="com.yzl.db.*" /> 这种写法是错误的！！！-->
+		<package name="com.yzl.db" />
+	</typeAliases>

@@ -5,7 +5,7 @@
 <configuration>
 	<properties resource="conf/dataSource.properties" />
 	<typeAliases>
-		<package name="com.yzl.db.entity" />
+		<package name="com.yzl.db" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

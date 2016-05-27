@@ -23,7 +23,7 @@ public class TestProducer {
 		boolean flag = true;
 		long begTime = new Date().getTime();
 		long endTime = begTime;
-
+		System.out.println(TestProducer.class.getClassLoader().getResource("").getPath());
 		while (flag) {
 			TransMessage transMessage = new TransMessage();
 			transMessage.setUuid("uuid:" + new Random().nextInt(100000000));
@@ -33,7 +33,7 @@ public class TestProducer {
 			transMessage.setMsgSeq(new Random().nextInt(10000000));
 			transMessage.setRecvTimeStamp("recvTimeStamp:22:30");
 			transMessage.setRespTimeStamp("respTimeStamp:23:30");
-			//producer.sendMessage(transMessage);
+			producer.sendMessage(transMessage);
 			endTime = new Date().getTime();
 			if (endTime - begTime > 100000 * 1000) {
 				flag = false;

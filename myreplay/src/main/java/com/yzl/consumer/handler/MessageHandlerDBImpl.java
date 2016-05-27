@@ -20,7 +20,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 
 	public MessageHandlerDBImpl(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
-		// objNumAdd();
+		 objNumAdd();
 	}
 
 	public MessageHandlerDBImpl() {
