@@ -109,7 +109,9 @@ public class TransMessage implements Serializable {
 
 	@Override
 	public String toString() {
-		return "[" + uuid + "=" + tranCode + "=" + msgSeq + "=" + requestMsg + "=" + responseMsg + "=" + recvTimeStamp
-				+ "=" + respTimeStamp + "]";
+		return "TransMessage [uuid=" + uuid + ", tranCode=" + tranCode + ", msgSeq=" + msgSeq + ", requestMsg="
+				+ requestMsg + ", responseMsg=" + responseMsg + ", recvTimeStamp=" + recvTimeStamp + ", respTimeStamp="
+				+ respTimeStamp + "]";
 	}
+
 }

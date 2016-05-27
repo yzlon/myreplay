@@ -1,5 +1,7 @@
 package com.yzl.consumer.handler;
 
+import java.io.IOException;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.yzl.db.entity.HFmtCode;
 import com.yzl.db.entity.extend.FmtCode;
 import com.yzl.util.Constants;
+import com.yzl.util.FileOper;
 import com.yzl.vo.TransMessage;
 
 @Component("messageHandler")
@@ -20,7 +23,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 
 	public MessageHandlerDBImpl(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
-		 objNumAdd();
+		objNumAdd();
 	}
 
 	public MessageHandlerDBImpl() {
@@ -33,6 +36,17 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 			TransMessage transMessage = null;
 			try {
 				transMessage = (TransMessage) ((ObjectMessage) message).getObject();
+				// 写入文件
+
+				try {
+					FileOper.saveFile(Constants.FILE_TYPE_REQUEST, transMessage.getUuid(),
+							transMessage.getRequestMsg());
+					FileOper.saveFile(Constants.FILE_TYPE_RESPONSE, transMessage.getUuid(),
+							transMessage.getResponseMsg());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				// 插入数据库操作
 				HFmtCode fmtCode = new FmtCode();
 				fmtCode.setUuid(transMessage.getUuid());

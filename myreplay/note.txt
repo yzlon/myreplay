@@ -40,3 +40,8 @@ SqlSessionTemplate
 	<!--		<package name="com.yzl.db.*" /> 这种写法是错误的！！！-->
 		<package name="com.yzl.db" />
 	</typeAliases>
+	
+	
+StringBuilder与 StringBuffer
+	StringBuilder：线程非安全的
+	StringBuffer：线程安全的
