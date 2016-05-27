@@ -10,14 +10,19 @@ import javax.jms.MessageListener;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.messaging.MessageHandler;
 
 import com.yzl.consumer.handler.MessageHandlerDBImpl;
 import com.yzl.util.Constants;
 
-public class ConsumerMessageListener implements MessageListener {
+public class ConsumerMessageListener implements MessageListener ,ApplicationContextAware{
 	private final static Logger logger = LoggerFactory.getLogger(ConsumerMessageListener.class);
 	private ExecutorService handlerPool = null;
 	private int handlerPoolNumbers = Constants.DEFAULT_HANDLER_POOL_NUMBERS;
+	ApplicationContext applicationContext;
 
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -38,9 +43,17 @@ public class ConsumerMessageListener implements MessageListener {
 			@Override
 			public void run() {
 				logger.info("listener启动了新的线程:" + Thread.currentThread().getName());
-				new MessageHandlerDBImpl(ConsumerMessageListener.this.sqlSessionTemplate).handler(msg);
+//				new MessageHandlerDBImpl(ConsumerMessageListener.this.sqlSessionTemplate).handler(msg);
+				MessageHandlerDBImpl messageHandler = (MessageHandlerDBImpl) ConsumerMessageListener.this.applicationContext.getBean("messageHandler");
+//				messageHandler.setSqlSessionTemplate(ConsumerMessageListener.this.sqlSessionTemplate);
+				messageHandler.handler(msg);
 			}
 		});
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
+		this.applicationContext = arg0;
 	}
 
 }

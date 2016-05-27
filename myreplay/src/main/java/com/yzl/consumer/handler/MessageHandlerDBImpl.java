@@ -8,6 +8,8 @@ import javax.jms.ObjectMessage;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.yzl.db.entity.HFmtCode;
 import com.yzl.db.entity.extend.FmtCode;
@@ -16,9 +18,12 @@ import com.yzl.util.FileOper;
 import com.yzl.vo.TransMessage;
 
 @Component("messageHandler")
+@Scope("prototype")
 public class MessageHandlerDBImpl implements IMessageHandler {
 	private final static Logger logger = LoggerFactory.getLogger(MessageHandlerDBImpl.class);
 	private static int objNums = 0;
+
+	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public MessageHandlerDBImpl(SqlSessionTemplate sqlSessionTemplate) {
@@ -27,6 +32,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 	}
 
 	public MessageHandlerDBImpl() {
+		objNumAdd();
 	}
 
 	@Override
@@ -65,6 +71,14 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 		} else {
 			logger.error("not ObjectMessage");
 		}
+	}
+
+	public SqlSessionTemplate getSqlSessionTemplate() {
+		return sqlSessionTemplate;
+	}
+
+	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
 
 	private synchronized void objNumAdd() {
