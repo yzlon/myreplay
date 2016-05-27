@@ -1,20 +1,22 @@
 package com.yzl.util;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ConfigureProperties {
+	private final static Logger logger = LoggerFactory.getLogger(ConfigureProperties.class);
 	private static Map<String, String> configures = null;
 
 	static {
 		try {
 			loadConfigures();
-			System.out.println("参数初始化完毕!");
+			logger.info("参数初始化完毕!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,7 +40,7 @@ public class ConfigureProperties {
 			/* 可以用一下方式 obj.toString */
 			configures.put(key.toString(), properties.getProperty(key.toString()));
 		}
-		System.out.println(configures);
+		logger.info(configures.toString());
 	}
 
 	public static String getConfigure(String key) {

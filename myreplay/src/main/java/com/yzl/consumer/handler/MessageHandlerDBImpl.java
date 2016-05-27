@@ -37,7 +37,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 
 	@Override
 	public void handler(Message message) {
-		System.out.println("当前对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
+		logger.info("当前对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
 		if (ObjectMessage.class.isInstance(message)) {
 			TransMessage transMessage = null;
 			try {
@@ -64,7 +64,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 				fmtCode.setFlag(Constants.H_FMT_CODE_FLAG_DEFAULT);
 				fmtCode.setStatus(Constants.H_FMT_CODE_STATUS_DEFAULT);
 				int i = sqlSessionTemplate.insert("HFmtCodeMapper.insert", fmtCode);
-				System.out.println("成功插入数据：" + i + " 条");
+				logger.info("成功插入数据：" + i + " 条");
 			} catch (JMSException e) {
 				e.printStackTrace();
 			}
@@ -83,6 +83,6 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 
 	private synchronized void objNumAdd() {
 		objNums++;
-		System.out.println("生成对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
+		logger.info("生成对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
 	}
 }

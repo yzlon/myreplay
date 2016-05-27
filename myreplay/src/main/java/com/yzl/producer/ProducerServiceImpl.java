@@ -40,7 +40,7 @@ public class ProducerServiceImpl implements ProducerService {
 		this.jmsTemplate.send(this.destination, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				System.out.println("send message:" + message.toString());
+				logger.info("send message:" + message.toString());
 				return session.createObjectMessage(message);
 			}
 		});

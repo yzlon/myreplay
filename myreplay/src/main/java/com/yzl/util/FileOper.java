@@ -18,11 +18,11 @@ public class FileOper {
 
 	public static String createFilePathByUuid(final String fileType, final String uuid, Date fileDate) {
 		if (null == fileType || 0 == fileType.trim().length()) {
-			System.out.println("传入的报文请求类型是空的");
+			logger.error("传入的报文请求类型是空的");
 			return null;
 		}
 		if (null == uuid || 0 == uuid.trim().length()) {
-			System.out.println("传入的UUID是空的");
+			logger.error("传入的UUID是空的");
 			return null;
 		}
 		if (null == fileDate) {
@@ -38,7 +38,7 @@ public class FileOper {
 		sb.append(uuid.substring(0, 2));
 		sb.append(File.separator);
 		sb.append(uuid.substring(2, 4));
-//		System.out.println("uuid:" + uuid + " path:" + sb.toString());
+//		logger.info("uuid:" + uuid + " path:" + sb.toString());
 
 		return sb.toString();
 	}
@@ -59,7 +59,7 @@ public class FileOper {
 	public static String readFile(String fileType, String uuid, Date fileDate, String path) throws IOException {
 		String rootPath = null;
 		if (null == uuid || 0 == uuid.trim().length()) {
-			System.out.println("传入的UUID是空的");
+			logger.error("传入的UUID是空的");
 			return null;
 		}
 		if (null == path || 0 == path.trim().length()) {
@@ -87,7 +87,7 @@ public class FileOper {
 		br.close();
 		isr.close();
 		fis.close();
-//		System.out.println("读到的数据为：" + sb.toString());
+//		logger.info("读到的数据为：" + sb.toString());
 		return sb.toString();
 	}
 }
