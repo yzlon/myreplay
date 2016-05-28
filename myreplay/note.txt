@@ -45,3 +45,6 @@ SqlSessionTemplate
 StringBuilder与 StringBuffer
 	StringBuilder：线程非安全的
 	StringBuffer：线程安全的
+	
+Stack 继承于Vector 所以也是线程安全的，当栈为空的时候要跑出EmptyStackException异常
+当用HashMap作为存放查询条件的参数传递给mapper的时候可以建立一个 HashMap<String,Object>类型的变量，这样value就可以存放任意类型的值了。

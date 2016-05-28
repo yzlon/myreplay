@@ -16,4 +16,7 @@ public class Constants {
 	// 应答报文
 	public final static String FILE_TYPE_RESPONSE = "RESPONSE";
 	public final static String FILE_TYPE_NEW_RESPONSE = "NEW_RESPONSE";
+	
+	//查询数据时每次查询的条数
+	public final static int QUERY_MAX_NUM = 10;
 }

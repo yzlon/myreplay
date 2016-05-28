@@ -24,4 +24,10 @@
 		select tran_code
 		from h_fmt_code group by tran_code
 	</select>
+	<select id="selectByTranCode" parameterType="map" resultType="HFmtCode">
+		select
+		<include refid="COL_BASE" />
+		from h_fmt_code where tran_code = #{tranCode} limit
+		#{beginNo},#{maxNo}
+	</select>
 </mapper>

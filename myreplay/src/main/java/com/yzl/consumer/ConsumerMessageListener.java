@@ -21,7 +21,7 @@ public class ConsumerMessageListener implements MessageListener ,ApplicationCont
 	private final static Logger logger = LoggerFactory.getLogger(ConsumerMessageListener.class);
 	private ExecutorService handlerPool = null;
 	private int handlerPoolNumbers = Constants.DEFAULT_HANDLER_POOL_NUMBERS;
-	ApplicationContext applicationContext;
+	private ApplicationContext applicationContext;
 
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
