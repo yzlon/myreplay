@@ -49,4 +49,7 @@
 		status = #{status},diff_result = #{diffResult},diff_info=#{diffInfo}
 		where uuid = #{uuid}
 	</update>
+	<select id="selectMaxMsgSeq" resultType="int">
+		select Max(msg_seq) as msgSeq from h_fmt_code ;
+	</select>
 </mapper>

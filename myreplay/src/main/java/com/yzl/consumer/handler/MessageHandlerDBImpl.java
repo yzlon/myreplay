@@ -36,7 +36,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 	}
 
 	@Override
-	public void handler(Message message) {
+	public void handler(Message message, int msgSeq) {
 		logger.info("当前对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
 		if (ObjectMessage.class.isInstance(message)) {
 			TransMessage transMessage = null;
@@ -56,7 +56,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 				HFmtCode fmtCode = new FmtCode();
 				fmtCode.setUuid(transMessage.getUuid());
 				fmtCode.setTranCode(transMessage.getTranCode());
-				fmtCode.setMsgSeq(transMessage.getMsgSeq());
+				fmtCode.setMsgSeq(msgSeq);
 				fmtCode.setResponseTime(transMessage.getRespTimeStamp());
 				fmtCode.setRequestTime(transMessage.getRecvTimeStamp());
 				fmtCode.setDiffCode(Constants.H_FMT_CODE_STATUS_DEFAULT);
