@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.yzl.db.mapper.FmtCodeMapper"> -->
+<mapper namespace="FmtCodeMapper">
+	<sql id="COL_BASE">
+		UUID,
+		TRAN_CODE, MSG_SEQ, REQUEST_TIME,
+		RESPONSE_TIME, FLAG,
+		STATUS,
+		DIFF_RESULT,DIFF_INFO
+	</sql>
+	<sql id="COL_TRAN">
+		UUID,
+		TRAN_CODE as tranCode, MSG_SEQ as msgSeq, REQUEST_TIME
+		as requestTime,
+		RESPONSE_TIME as responseTime, FLAG,
+		STATUS,
+		DIFF_RESULT
+		as
+		diffResult,
+		DIFF_INFO as diffInfo
+	</sql>
+	<insert id="insert" parameterType="FmtCode">
+		insert into H_FMT_CODE (UUID,
+		TRAN_CODE, MSG_SEQ, REQUEST_TIME,
+		RESPONSE_TIME, FLAG,
+		STATUS,
+		DIFF_RESULT,DIFF_INFO)
+		values (#{uuid}, #{tranCode}, #{msgSeq},
+		#{requestTime},
+		#{responseTime},#{flag}, #{status},
+		#{diffResult},#{diffInfo})
+	</insert>
+	<select id="selectDistinTranCode" resultType="string">
+		select tran_code
+		from h_fmt_code group by tran_code
+	</select>
+	<select id="selectByTranCode" parameterType="map" resultType="FmtCode">
+		select
+		<include refid="COL_TRAN" />
+		from h_fmt_code where tran_code = #{tranCode} and status = #{status}
+		limit
+		#{beginNo},#{maxNo}
+	</select>
+	<update id="updateStatus" parameterType="FmtCode">
+		update h_fmt_code set
+		status = #{status},diff_result = #{diffResult},diff_info=#{diffInfo}
+		where uuid = #{uuid}
+	</update>
+</mapper>

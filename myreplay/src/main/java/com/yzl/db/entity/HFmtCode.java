@@ -1,7 +1,17 @@
 package com.yzl.db.entity;
 
 public class HFmtCode {
-	private String diffCode;
+	private String diffResult;
+	
+	private String diffInfo;
+
+	public String getDiffInfo() {
+		return diffInfo;
+	}
+
+	public void setDiffInfo(String diffInfo) {
+		this.diffInfo = diffInfo;
+	}
 
 	private String flag;
 
@@ -20,12 +30,12 @@ public class HFmtCode {
 	public HFmtCode() {
 	}
 
-	public String getDiffCode() {
-		return this.diffCode;
+	public String getDiffResult() {
+		return this.diffResult;
 	}
 
-	public void setDiffCode(String diffCode) {
-		this.diffCode = diffCode;
+	public void setDiffCode(String diffResult) {
+		this.diffResult = diffResult;
 	}
 
 	public String getFlag() {

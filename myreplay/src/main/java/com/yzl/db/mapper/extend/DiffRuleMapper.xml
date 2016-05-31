@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.yzl.db.mapper.DiffRuleMapper"> -->
+<mapper namespace="DiffRuleMapper">
+	<sql id="COL_BASE">
+		TRAN_CODE as tranCode, ELE_CODE as eleCode,
+		DESELECT_FLAG as deSelectFlag,CMP_TYPE as cmpType,VALUE1,VALUE2,REMARK
+	</sql>
+	<select id="selectByTranCode" parameterType="string" resultType="DiffRule">
+		select
+		<include refid="COL_BASE" />
+		from h_diff_rule
+		where tran_code=#{tranCode}
+	</select>
+</mapper>

@@ -4,6 +4,15 @@ import java.util.List;
 
 public class CompareResult {
 	private List<String> compareInfo;
+	private boolean diff;
+
+	public boolean isDiff() {
+		return diff;
+	}
+
+	public void setDiff(boolean diff) {
+		this.diff = diff;
+	}
 
 	public List<String> getCompareInfo() {
 		return compareInfo;

@@ -1,6 +1,6 @@
 package com.yzl.db.entity;
 
-public class HRuleFiled {
+public class HRuleField {
 	private String cmpType;
 
 	private String eleCode;
@@ -15,7 +15,7 @@ public class HRuleFiled {
 
 	private String value2;
 
-	public HRuleFiled() {
+	public HRuleField() {
 	}
 
 	public String getCmpType() {

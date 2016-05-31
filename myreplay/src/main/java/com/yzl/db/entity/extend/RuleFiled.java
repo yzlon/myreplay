@@ -2,9 +2,9 @@ package com.yzl.db.entity.extend;
 
 import java.io.Serializable;
 
-import com.yzl.db.entity.HRuleFiled;
+import com.yzl.db.entity.HRuleField;
 
-public class RuleFiled extends HRuleFiled implements Serializable {
+public class RuleFiled extends HRuleField implements Serializable {
 
 	/**
 	 * 

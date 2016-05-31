@@ -50,7 +50,6 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 					FileOper.saveFile(Constants.FILE_TYPE_RESPONSE, transMessage.getUuid(),
 							transMessage.getResponseMsg());
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				// 插入数据库操作
@@ -61,9 +60,10 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 				fmtCode.setResponseTime(transMessage.getRespTimeStamp());
 				fmtCode.setRequestTime(transMessage.getRecvTimeStamp());
 				fmtCode.setDiffCode(Constants.H_FMT_CODE_STATUS_DEFAULT);
+				fmtCode.setDiffInfo("还没有开始比对");
 				fmtCode.setFlag(Constants.H_FMT_CODE_FLAG_DEFAULT);
 				fmtCode.setStatus(Constants.H_FMT_CODE_STATUS_DEFAULT);
-				int i = sqlSessionTemplate.insert("HFmtCodeMapper.insert", fmtCode);
+				int i = sqlSessionTemplate.insert("FmtCodeMapper.insert", fmtCode);
 				logger.info("成功插入数据：" + i + " 条");
 			} catch (JMSException e) {
 				e.printStackTrace();

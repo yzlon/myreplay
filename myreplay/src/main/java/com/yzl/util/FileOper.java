@@ -37,7 +37,7 @@ public class FileOper {
 		sb.append(uuid.substring(0, 2));
 		sb.append(File.separator);
 		sb.append(uuid.substring(2, 4));
-//		logger.info("uuid:" + uuid + " path:" + sb.toString());
+		// logger.info("uuid:" + uuid + " path:" + sb.toString());
 
 		return sb.toString();
 	}
@@ -72,7 +72,12 @@ public class FileOper {
 		} else {
 			filePath = rootPath + File.separator + uuid;
 		}
-		FileInputStream fis = new FileInputStream(filePath);
+		File file = new File(filePath);
+		if (!file.exists()) {
+			logger.warn("文件[ " + filePath + " ]不存在");
+			return null;
+		}
+		FileInputStream fis = new FileInputStream(file);
 		InputStreamReader isr = new InputStreamReader(fis);
 		BufferedReader br = new BufferedReader(isr);
 		StringBuilder sb = new StringBuilder();
@@ -86,7 +91,7 @@ public class FileOper {
 		br.close();
 		isr.close();
 		fis.close();
-//		logger.info("读到的数据为：" + sb.toString());
+		// logger.info("读到的数据为：" + sb.toString());
 		return sb.toString();
 	}
 }
