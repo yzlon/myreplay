@@ -64,15 +64,6 @@ public class DataCompareThread implements Runnable {
 			condition.put("maxNo", maxNo);
 			logger.info("开始比对交易：" + tranCode);
 			while (true) {
-				// if (!condition.isEmpty()) {
-				// condition.replace("beginNo", beginNo);
-				// condition.replace("beginNo", maxNo);
-				// } else {
-				// condition.put("tranCode", tranCode);
-				// condition.put("beginNo", beginNo);
-				// condition.put("maxNo", maxNo);
-				// }
-
 				logger.info("查询起止记录数:" + beginNo + " - " + maxNo);
 				List<FmtCode> fmtCodes = sqlSessionTemplate.selectList("FmtCodeMapper.selectByTranCode", condition);
 				if (null == fmtCodes || fmtCodes.isEmpty()) {
@@ -87,22 +78,20 @@ public class DataCompareThread implements Runnable {
 						logger.info("rule:" + rule.toString());
 						CompareResult compareResult = XmlOper.compare(fmtCode, rule);
 						if (compareResult.isDiff()) {
-							fmtCode.setDiffCode("1");
+							fmtCode.setDiffCode(Constants.H_FMT_CODE_DIFF_CODE_DIFFERENT);
 							fmtCode.setDiffInfo(compareResult.getCompareInfo().toString());
 							compareResults.add(compareResult);
 						} else {
-							fmtCode.setDiffCode("0");
+							fmtCode.setDiffCode(Constants.H_FMT_CODE_DIFF_CODE_SAME);
 						}
-						fmtCode.setStatus("1");
+						fmtCode.setStatus(Constants.H_FMT_CODE_STATUS_SUCC);
 						sqlSessionTemplate.update("FmtCodeMapper.updateStatus", fmtCode);
 					}
 					for (CompareResult compareResult : compareResults) {
-						logger.info("最终的比对结果:" + compareResult.toString());
+						logger.info("最终的比对结果:" + compareResult.getCompareInfo().toString());
 					}
 				}
 				logger.info("****************");
-				// beginNo = maxNo + 1;
-				// maxNo += Constants.QUERY_MAX_NUM;
 			}
 			break;
 		}
