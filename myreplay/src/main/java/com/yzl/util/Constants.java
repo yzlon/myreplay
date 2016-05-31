@@ -7,7 +7,10 @@ public class Constants {
 	public final static String H_FMT_CODE_STATUS_FAIL = "2";
 	public final static String H_FMT_CODE_DIFF_CODE_SAME = "0";/* 比对结果 */
 	public final static String H_FMT_CODE_DIFF_CODE_DIFFERENT = "1";
+	// 发送主机状态
 	public final static String H_FMT_CODE_FLAG_DEFAULT = "0";
+	public final static String H_FMT_CODE_FLAG_SUCC = "1";
+	public final static String H_FMT_CODE_FLAG_FAIL = "2";
 
 	// 接收报文的存放路径
 	public final static String FILE_PATH_ROOT = "FMT_CODE_SAVE_PATH";
@@ -19,5 +22,5 @@ public class Constants {
 	public final static String FILE_TYPE_COMPARE_RESULT = "COMPARE_RESULT";
 
 	// 查询数据时每次查询的条数
-	public final static int QUERY_MAX_NUM = 10;
+	public final static int QUERY_MAX_NUM = 2;
 }

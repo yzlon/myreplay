@@ -1,7 +1,5 @@
 package com.yzl.consumer.handler;
 
-import java.io.IOException;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
@@ -21,23 +19,20 @@ import com.yzl.vo.TransMessage;
 @Scope("prototype")
 public class MessageHandlerDBImpl implements IMessageHandler {
 	private final static Logger logger = LoggerFactory.getLogger(MessageHandlerDBImpl.class);
-	private static int objNums = 0;
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public MessageHandlerDBImpl(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
-		objNumAdd();
 	}
 
 	public MessageHandlerDBImpl() {
-		objNumAdd();
 	}
 
 	@Override
 	public void handler(Message message, int msgSeq) {
-		logger.info("当前对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
+		logger.info("当前对象的序号:" + Thread.currentThread().getName() + " num:" + msgSeq);
 		if (ObjectMessage.class.isInstance(message)) {
 			TransMessage transMessage = null;
 			try {
@@ -79,10 +74,5 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 
 	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
-	}
-
-	private synchronized void objNumAdd() {
-		objNums++;
-		logger.info("生成对象的序号:" + Thread.currentThread().getName() + " num:" + objNums);
 	}
 }

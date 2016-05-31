@@ -56,8 +56,7 @@ public class CompareService implements ApplicationContextAware {
 			comparePool = Executors.newFixedThreadPool(this.threadNum);
 		}
 		logger.info("需要生成线程的个数为:" + threadNum);
-		// for (int i = 0; i < threadNum; i++) {
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < threadNum; i++) {
 			DataCompareThread compareThread = (DataCompareThread) this.applicationContext.getBean("dataCompareThread");
 			this.comparePool.execute(compareThread);
 		}

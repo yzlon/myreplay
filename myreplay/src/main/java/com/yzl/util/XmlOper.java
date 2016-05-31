@@ -48,14 +48,12 @@ public class XmlOper {
 			}
 			logger.error(errMsg);
 			compareInfo.add(errMsg);
-			if (!compareResult.isDiff()) {
-				compareResult.setDiff(true);
-			}
+			compareResult.setDiff(true);
 			return compareResult;
 		}
 
-//		logger.info("oxml:" + oxml);
-//		logger.info("txml:" + txml);
+		// logger.info("oxml:" + oxml);
+		// logger.info("txml:" + txml);
 		// 获取xpath和值的映射集合
 		Document oDoc = null;
 		Document tDoc = null;

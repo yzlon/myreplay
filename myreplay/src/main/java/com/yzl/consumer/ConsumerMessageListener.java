@@ -11,7 +11,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -48,17 +47,17 @@ public class ConsumerMessageListener implements MessageListener, ApplicationCont
 			}
 		}
 		final int msgSeq = msgOrder++;
-		
+
 		this.handlerPool.execute(new Runnable() {
 			@Override
 			public void run() {
 				logger.info("listener启动了新的线程:" + Thread.currentThread().getName());
 				// new
-				// MessageHandlerDBImpl(ConsumerMessageListener.this.sqlSessionTemplate).handler(msg);
+				// MessageHandlerDBImpl(ConsumerMessageListener.this.sqlSessionTemplate).handler(msg,msgSeq);
 				MessageHandlerDBImpl messageHandler = (MessageHandlerDBImpl) ConsumerMessageListener.this.applicationContext
 						.getBean("messageHandler");
 				// messageHandler.setSqlSessionTemplate(ConsumerMessageListener.this.sqlSessionTemplate);
-				messageHandler.handler(msg,msgSeq);
+				messageHandler.handler(msg, msgSeq);
 			}
 		});
 	}

@@ -33,23 +33,41 @@
 		#{responseTime},#{flag}, #{status},
 		#{diffResult},#{diffInfo})
 	</insert>
+	<!-- 查询共有多少种交易码，用来生成线程，每个交易码对应一个线程 -->
 	<select id="selectDistinTranCode" resultType="string">
 		select tran_code
 		from h_fmt_code group by tran_code
 	</select>
+	<!-- 查询指定条数的没有比对的报文 -->
 	<select id="selectByTranCode" parameterType="map" resultType="FmtCode">
 		select
 		<include refid="COL_TRAN" />
 		from h_fmt_code where tran_code = #{tranCode} and status = #{status}
 		limit
-		#{beginNo},#{maxNo}
+		#{beginNo},#{qryNum}
 	</select>
+	<!-- 修改比对后的状态为已经比对，和有没有异同 -->
 	<update id="updateStatus" parameterType="FmtCode">
 		update h_fmt_code set
 		status = #{status},diff_result = #{diffResult},diff_info=#{diffInfo}
 		where uuid = #{uuid}
 	</update>
+	<!-- 获取最大的报文编号，用来排序 -->
 	<select id="selectMaxMsgSeq" resultType="int">
-		select Max(msg_seq) as msgSeq from h_fmt_code ;
+		select Max(msg_seq) as
+		msgSeq from h_fmt_code ;
 	</select>
+	<!-- 回放报文查询 -->
+	<select id="selectReplayList" parameterType="map" resultType="FmtCode">
+		select
+		<include refid="COL_TRAN" />
+		from h_fmt_code where flag = '0' order by ${orderRule}
+		limit
+		#{beginNo},#{qryNum}
+	</select>
+	<!-- 修改已经发送到核心的状态 -->
+	<update id="updateHostFlag" parameterType="FmtCode">
+		update h_fmt_code set
+		flag =#{flag} where uuid =#{uuid}
+	</update>
 </mapper>

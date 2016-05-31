@@ -56,15 +56,14 @@ public class DataCompareThread implements Runnable {
 
 			Map<String, Object> condition = new HashMap<String, Object>();
 			int beginNo = 0;
-			int maxNo = Constants.QUERY_MAX_NUM;// 每次比对的条数
+			int qryNum = Constants.QUERY_MAX_NUM;// 每次比对的条数
 			condition.put("tranCode", tranCode);
 			condition.put("status", "0");
-			;
 			condition.put("beginNo", beginNo);
-			condition.put("maxNo", maxNo);
+			condition.put("qryNum", qryNum);
 			logger.info("开始比对交易：" + tranCode);
 			while (true) {
-				logger.info("查询起止记录数:" + beginNo + " - " + maxNo);
+				logger.info("查询起止记录数:" + beginNo + " - " + qryNum);
 				List<FmtCode> fmtCodes = sqlSessionTemplate.selectList("FmtCodeMapper.selectByTranCode", condition);
 				if (null == fmtCodes || fmtCodes.isEmpty()) {
 					break;
@@ -92,9 +91,8 @@ public class DataCompareThread implements Runnable {
 					}
 				}
 				logger.info("****************");
-			}
-			break;
-		}
+			}//while
+		}//while
 	}
 
 }

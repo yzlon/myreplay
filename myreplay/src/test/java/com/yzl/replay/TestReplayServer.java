@@ -1,4 +1,4 @@
-package com.yzl.compare;
+package com.yzl.replay;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,22 +10,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:conf/applicationContext.xml" })
-public class TestCompareService {
-	private final static Logger logger = LoggerFactory.getLogger(TestCompareService.class);
+public class TestReplayServer {
+	private final static Logger logger = LoggerFactory.getLogger(TestReplayServer.class);
 
 	@Autowired
-	CompareService compareService;
+	ReplayServer replayServer;
 
 	@Test
-	public void testCompare() {
-		logger.info("starting.......");
-		compareService.start();
-		try {
-			Thread.sleep(100*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		logger.info("compare over.......");
+	public void testReplay() {
+		logger.info("begin。。。");
+		replayServer.replay();
+		logger.info("end。。。");
 	}
 }
