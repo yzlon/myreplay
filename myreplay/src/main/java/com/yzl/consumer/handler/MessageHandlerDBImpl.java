@@ -49,7 +49,7 @@ public class MessageHandlerDBImpl implements IMessageHandler {
 							transMessage.getRequestMsg());
 					FileOper.saveFile(Constants.FILE_TYPE_RESPONSE, transMessage.getUuid(),
 							transMessage.getResponseMsg());
-				} catch (IOException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				// 插入数据库操作
