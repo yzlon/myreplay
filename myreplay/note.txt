@@ -52,3 +52,5 @@ Stack 继承于Vector 所以也是线程安全的，当栈为空的时候要跑出EmptyStackException异
 mybatis的mapper中 #{} 和${} 的区别是，#{value}对字符串会变成 'value' 而$不会,所以 order by ${value} 后的参数 要用$传递
 
 mybatis插入的汉字是乱码（主要是变成？？？？），在配置文件my.ini中，加入[mysqld]character-set-server=utf8 [client]default-character-set = utf8[mysql]default-character-set = utf8
+
+容器类在遍历的过程中不能直接删除数据，只能用Iterator的remove来删除

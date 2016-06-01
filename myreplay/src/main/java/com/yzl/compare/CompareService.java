@@ -1,7 +1,7 @@
 package com.yzl.compare;
 
-import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -18,7 +18,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import com.yzl.db.entity.extend.DiffRule;
-import com.yzl.db.entity.extend.RuleFiled;
+import com.yzl.db.entity.extend.FmtCode;
 
 @Component
 public class CompareService implements ApplicationContextAware {
@@ -56,10 +56,12 @@ public class CompareService implements ApplicationContextAware {
 			comparePool = Executors.newFixedThreadPool(this.threadNum);
 		}
 		logger.info("需要生成线程的个数为:" + threadNum);
+
 		for (int i = 0; i < threadNum; i++) {
 			DataCompareThread compareThread = (DataCompareThread) this.applicationContext.getBean("dataCompareThread");
 			this.comparePool.execute(compareThread);
 		}
+
 	}
 
 	public static List<DiffRule> getRules(String tranCode) {
@@ -72,18 +74,34 @@ public class CompareService implements ApplicationContextAware {
 
 	private void getTranCodeDiffRules() {
 		rules = new HashMap<String, List<DiffRule>>();
-		Enumeration<String> tranCodes = tranCodeGroupStack.elements();
-		while (tranCodes.hasMoreElements()) {
-			String tranCode = tranCodes.nextElement();
+		Iterator<String> it = tranCodeGroupStack.iterator();
+		while (it.hasNext()) {
+			String tranCode = it.next();
 			List<DiffRule> tranRules = sqlSessionTemplate.selectList("DiffRuleMapper.selectByTranCode", tranCode);
 			if (tranRules.isEmpty() || null == tranRules) {
 				logger.error("交易码[ " + tranCode + " ]没有配置比对规则");
 				// 删除此交易的比对
-				tranCodeGroupStack.remove(tranCode);
+				it.remove();
+				// 修改此交易的状态
+				sqlSessionTemplate.update("FmtCodeMapper.updateNoRules", tranCode);
 				continue;
 			}
 			rules.put(tranCode, tranRules);
 		} // while
+		/*
+		 * 不能直接删除Stack中的数据，要删除用Iterator Enumeration<String> tranCodes =
+		 * tranCodeGroupStack.elements(); while (tranCodes.hasMoreElements()) {
+		 * String tranCode = tranCodes.nextElement(); List<DiffRule> tranRules =
+		 * sqlSessionTemplate.selectList("DiffRuleMapper.selectByTranCode",
+		 * tranCode); if (tranRules.isEmpty() || null == tranRules) {
+		 * logger.error("交易码[ " + tranCode + " ]没有配置比对规则"); // 删除此交易的比对
+		 * logger.info("*****************");
+		 * tranCodeGroupStack.remove(tranCode);
+		 * logger.info(tranCodeGroupStack.toString());
+		 * logger.info("*************333333333333***");
+		 * 
+		 * continue; } rules.put(tranCode, tranRules); } // while
+		 */
 	}
 
 	private void getTranCodeGroup() {

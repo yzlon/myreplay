@@ -24,17 +24,11 @@ import com.yzl.vo.CompareResult;
 public class DataCompareThread implements Runnable {
 	private final static Logger logger = LoggerFactory.getLogger(DataCompareThread.class);
 
-	private long threadSeqNo;
-
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public DataCompareThread() {
 		logger.info("生成新的datacompareThread");
-	}
-
-	public DataCompareThread(long threadSeqNo) {
-		this.threadSeqNo = threadSeqNo;
 	}
 
 	@Override
@@ -50,6 +44,7 @@ public class DataCompareThread implements Runnable {
 			// 获得该交易码对应的比对规则
 			List<DiffRule> rules = CompareService.getRules(tranCode);
 			if (null == rules) {
+				sqlSessionTemplate.update("FmtCodeMapper.updateNoRules", tranCode);
 				logger.error("交易码[ " + tranCode + " ]的交易规则还没有配置");
 				continue;
 			}
@@ -72,27 +67,40 @@ public class DataCompareThread implements Runnable {
 				logger.info("查出数据[ " + fmtCodes.size() + " ]条,交易规则[ " + rules.size() + " ]条");
 				for (FmtCode fmtCode : fmtCodes) {
 					ArrayList<CompareResult> compareResults = new ArrayList<CompareResult>();
+					// 比对完成内容
+					StringBuilder diffInfo = new StringBuilder();
+					// 异同标识
+					boolean diff = false;
+
 					logger.info("fmtCode:" + fmtCode.toString());
 					for (DiffRule rule : rules) {
 						logger.info("rule:" + rule.toString());
 						CompareResult compareResult = XmlOper.compare(fmtCode, rule);
 						if (compareResult.isDiff()) {
-							fmtCode.setDiffCode(Constants.H_FMT_CODE_DIFF_CODE_DIFFERENT);
-							fmtCode.setDiffInfo(compareResult.getCompareInfo().toString());
+							diff = true;
+							diffInfo.append(
+									"规则[ " + rule.getCmpType() + " ]比对结果[ " + compareResult.getCompareInfo() + " ];");
 							compareResults.add(compareResult);
 						} else {
-							fmtCode.setDiffCode(Constants.H_FMT_CODE_DIFF_CODE_SAME);
+							diffInfo.append("规则[ " + rule.getCmpType() + " ]比对相同;");
 						}
-						fmtCode.setStatus(Constants.H_FMT_CODE_STATUS_SUCC);
-						sqlSessionTemplate.update("FmtCodeMapper.updateStatus", fmtCode);
+					} // for
+						// 修改比对状态
+					if (diff) {
+						fmtCode.setDiffCode(Constants.H_FMT_CODE_DIFF_CODE_DIFFERENT);
+					} else {
+						fmtCode.setDiffCode(Constants.H_FMT_CODE_DIFF_CODE_SAME);
 					}
+					fmtCode.setStatus(Constants.H_FMT_CODE_STATUS_SUCC);
+					fmtCode.setDiffInfo(diffInfo.toString());
+					sqlSessionTemplate.update("FmtCodeMapper.updateStatus", fmtCode);
+
 					for (CompareResult compareResult : compareResults) {
 						logger.info("最终的比对结果:" + compareResult.getCompareInfo().toString());
-					}
-				}
-				logger.info("****************");
-			}//while
-		}//while
+					} // for
+				} // for
+			} // while
+		} // while
 	}
 
 }

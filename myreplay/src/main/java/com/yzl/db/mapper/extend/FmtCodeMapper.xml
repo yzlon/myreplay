@@ -52,6 +52,11 @@
 		status = #{status},diff_result = #{diffResult},diff_info=#{diffInfo}
 		where uuid = #{uuid}
 	</update>
+	<!-- 没有配置比对交易规则的修改 -->
+	<update id="updateNoRules" parameterType="string">
+		update h_fmt_code set
+		diff_info= '没有配置比对规则' where tran_code = #{tranCode}
+	</update>
 	<!-- 获取最大的报文编号，用来排序 -->
 	<select id="selectMaxMsgSeq" resultType="int">
 		select Max(msg_seq) as

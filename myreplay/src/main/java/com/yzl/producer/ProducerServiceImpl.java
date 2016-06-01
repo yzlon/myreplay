@@ -1,6 +1,7 @@
 package com.yzl.producer;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
@@ -57,8 +58,8 @@ public class ProducerServiceImpl implements ProducerService {
 			e.printStackTrace();
 		}
 		transMessage.setMsgSeq(new Random().nextInt(10000000));
-		transMessage.setRecvTimeStamp(String.valueOf(System.currentTimeMillis()));
-		transMessage.setRespTimeStamp(String.valueOf(System.currentTimeMillis()));
+		transMessage.setRecvTimeStamp(String.valueOf(new Date().getTime()));
+		transMessage.setRespTimeStamp(String.valueOf(new Date().getTime()));
 
 		return transMessage;
 	}

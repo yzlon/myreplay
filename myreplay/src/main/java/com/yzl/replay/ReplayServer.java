@@ -1,5 +1,6 @@
 package com.yzl.replay;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,9 +48,11 @@ public class ReplayServer {
 				String requestMsg;
 				String responseMsg = null;
 				try {
-					requestMsg = FileOper.readFile(Constants.FILE_TYPE_REQUEST, fmtCode.getUuid(), null, null);
+					logger.info("**********" + fmtCode.getRequestTime());
+					requestMsg = FileOper.readFile(Constants.FILE_TYPE_REQUEST, fmtCode.getUuid(),
+							new Date(Long.valueOf(fmtCode.getRequestTime()).longValue()), null);
 					requestMsg = fmtCode.getUuid();// 测试
-					responseMsg = HostClient.client(requestMsg);
+					responseMsg = HostClient.client(fmtCode);
 					// 保存应答报文
 					FileOper.saveFile(Constants.FILE_TYPE_NEW_RESPONSE, fmtCode.getUuid(), responseMsg);
 				} catch (Exception e) {
@@ -62,7 +65,7 @@ public class ReplayServer {
 					fmtCode.setFlag(Constants.H_FMT_CODE_FLAG_SUCC);
 				}
 				sqlSessionTemplate.update("FmtCodeMapper.updateHostFlag", fmtCode);
-			}//for
+			} // for
 		}
 	}
 }

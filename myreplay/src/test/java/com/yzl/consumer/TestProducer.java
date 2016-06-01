@@ -37,7 +37,7 @@ public class TestProducer {
 		while (flag) {
 			producer.sendMessage(null);
 			endTime = new Date().getTime();
-			if (endTime - begTime > 100000 * 1000) {
+			if (endTime - begTime > 5 * 1000) {
 				flag = false;
 			}
 		} // while(flag)
