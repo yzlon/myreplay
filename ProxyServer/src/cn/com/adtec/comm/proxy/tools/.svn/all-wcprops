@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools
+END
+Tools.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tms/!svn/ver/205/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools/Tools.java
+END
+HxThreadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tms/!svn/ver/127/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools/HxThreadPool.java
+END
+SystemTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools/SystemTime.java
+END
+TMSThreadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tms/!svn/ver/47/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools/TMSThreadPool.java
+END
+XMLDeal.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tms/!svn/ver/127/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools/XMLDeal.java
+END
+FileTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/tools/FileTool.java
+END

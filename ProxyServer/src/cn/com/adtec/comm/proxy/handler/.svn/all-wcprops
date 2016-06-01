@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tms/!svn/ver/314/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler
+END
+SubFLOWServerBusinessHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/SubFLOWServerBusinessHandler.java
+END
+TMS001.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/TMS001.java
+END
+TMS002.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/TMS002.java
+END
+TMS101.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/TMS101.java
+END
+ManageServerBusinessHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/ManageServerBusinessHandler.java
+END
+SubXML_HXServerBusinessHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/SubXML_HXServerBusinessHandler.java
+END
+SubXMLServerBusinessHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/SubXMLServerBusinessHandler.java
+END
+COMM01.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tms/!svn/ver/314/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/COMM01.java
+END
+COMM11.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/COMM11.java
+END
+SubSOAPServerBusinessHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/tms/!svn/ver/314/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/handler/SubSOAPServerBusinessHandler.java
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tms/!svn/ver/26/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean
+END
+CommObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/CommObject.java
+END
+SOAPsendBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/SOAPsendBean.java
+END
+NewMoniObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tms/!svn/ver/26/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/NewMoniObject.java
+END
+HxLongConnObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/HxLongConnObject.java
+END
+SOAPCommObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tms/!svn/ver/26/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/SOAPCommObject.java
+END
+NodeAttibute.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/NodeAttibute.java
+END
+HxSessionObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/bean/HxSessionObject.java
+END

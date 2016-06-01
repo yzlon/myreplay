@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tms/!svn/ver/127/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server
+END
+ManageServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/ManageServer.java
+END
+SubXML_HXServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/tms/!svn/ver/127/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/SubXML_HXServer.java
+END
+SubXMLServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/SubXMLServer.java
+END
+SubSOAPServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/SubSOAPServer.java
+END
+AbstractSubServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/AbstractSubServer.java
+END
+SubFLOWServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/SubFLOWServer.java
+END
+SubService.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tms/!svn/ver/7/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/server/SubService.java
+END

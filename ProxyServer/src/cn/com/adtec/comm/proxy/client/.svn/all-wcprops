@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tms/!svn/ver/264/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/client
+END
+HttpSoapClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/tms/!svn/ver/205/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/client/HttpSoapClient.java
+END
+SocketClientLongConn.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/tms/!svn/ver/330/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/client/SocketClientLongConn.java
+END
+SocketClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tms/!svn/ver/327/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/client/SocketClient.java
+END
+HXClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tms/!svn/ver/205/JAVA%E6%BA%90%E7%A0%81/CommunicationServer/src/cn/com/adtec/comm/proxy/client/HXClient.java
+END

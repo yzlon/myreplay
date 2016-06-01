@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/commons-logging-1.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/mina-core-2.0.0-RC1.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/tomcat-apr-5.5.23.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/commons-httpclient-3.1-rc1.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/dom4j-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/ecap.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/logback-classic-1.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/logback-core-1.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/配置管理库/JAVA源码/CommunicationServer/lib/slf4j-api-1.6.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

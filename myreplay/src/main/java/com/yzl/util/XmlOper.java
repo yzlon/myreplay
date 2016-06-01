@@ -81,7 +81,7 @@ public class XmlOper {
 				continue;
 			}
 			if (0 == "1".compareTo(rule.getCmpType())) {// 1-标签比对
-				// 删除目标中有的
+				// 上面的判断已经实现了
 			} else if (0 == "2".compareTo(rule.getCmpType())) {// 2-标签及值比对
 				List<String> oValueList = oValues.get(oKey);
 				List<String> tValueList = tValues.get(oKey);
@@ -97,8 +97,16 @@ public class XmlOper {
 					}
 				}
 			} else if (0 == "3".compareTo(rule.getCmpType())) {// 3-标签及值的合理范围比对
+				String errMsg = "还不支持3-合理范围比对";
+				logger.error(errMsg);
+				compareInfo.clear();
+				compareInfo.add(errMsg);
+				if (!compareResult.isDiff()) {
+					compareResult.setDiff(true);
+				}
+				break;
 			} else {
-				String errMsg = "不支持的比对类型";
+				String errMsg = "不支持的比对类型,目前只支持[1-标签比对2-标签和值比对3-合理范围比对]";
 				logger.error(errMsg);
 				compareInfo.add(errMsg);
 				if (!compareResult.isDiff()) {

@@ -35,14 +35,6 @@ public class TestCompareService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Map<String, Object> condition = new HashMap<String, Object>();
-		condition.put("tranCode", "00010021003");
-		condition.put("beginNo", 0);
-		condition.put("qryNum", 1);
-		condition.put("status", "1");
-		FmtCode fmtCode = sqlSessionTemplate.selectOne("FmtCodeMapper.selectByTranCode", condition);
-		if (fmtCode != null)
-			logger.info(fmtCode.getDiffInfo());
 		logger.info("compare over.......");
 	}
 }
