@@ -1,0 +1,44 @@
+controller的配置方式
+第一种：URL对应Bean，xml配置如下(001springmvc_hello就是这样的配置)：
+	<!-- 配置handlerMapper -->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+	<bean name="/hello.do" class="com.yzl.controller.HelloController" />
+	HelloController实现接口Controller
+	以上配置，等用/hello.do访问的时候就会找到/hello.do的Bean，此类方式适合小型的应用系统。
+	
+第二种: 为URL分配Bean，使用一个统一的配置集合，对各个URL对应的Contoller做关系映射(003springmvc_url2controller)
+    web.xml中做配置：
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+    mvc.xml配置：
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<!-- key对应着url的请求名,可以用通配符 value对应处理器的id -->
+				<prop key="/hello.do">helloController</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="helloController" class="com.yzl.controller.HelloController" />
+	HelloController 要实现Controller接口
+	这种方式也是最常用的方式
+
+第三种： URL匹配Bean
+	必须遵命名的规范
+	<!-- hello*.do的请求将讲给helloController处理 -->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+	<bean id="helloController" class="com.yzl.controller.HelloController" />
+	HelloController实现接口Controller
+
+第四种：注解的方式 002springmvc_annotation
+	必须在xml开启spring注解
+	<!-- 扫描该包下的注解 -->
+	<context:component-scan base-package="com.yzl.controller" />
+	HelloController类要加上注解@Controller 和 @RequestMapping("/hello")(此注解可以放到类前面或者方法前面)

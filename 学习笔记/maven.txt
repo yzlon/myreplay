@@ -1,0 +1,27 @@
+mvn archetype:create -DgroupId=com.mycompany.app -DartifactId=my-app
+mvn archetype:generate -DarchetypeCatalog=internal -DgroupId=com.yzl.maven -DartifactId=test1 -DpackageName=com.yzl.maven.test1
+	groupId
+	artifactId:项目的名称
+ -DarchetypeCatalog=internal 不从远程服务器取catalog
+
+
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-archetype-plugin:2.4:create (default-cli) on project standalone-pom: Unable to parse configuration of mojo org.apache.maven.plugins:maven-archetype-plugin:2.4:create for parameter #: Cannot create instance of interface org.apache.maven.artifact.repository.ArtifactRepository: org.apache.maven.artifact.repository.ArtifactRepository.<init>() -> [Help 1]
+
+
+mvn compile
+mvn test-compile
+mvn test
+mvn site 生成项目相关信息的网站
+mvn clean 清除目录中的生成结果
+mvn package 依据项目生成jar文件
+mvn install 在本地Repository种安装jar
+mvn eclipse:eclipse
+mvn install -Dmaven.test.skip=true
+
+安装jar包
+mvn install:install-file -Dfile=f:\junit-4.11.jar -DgroupId=junit -DartifactId=junit -Dversion=4.11 -Dpackaging=jar
+
+
+mvnrepository.com
+
+pom.xml：
