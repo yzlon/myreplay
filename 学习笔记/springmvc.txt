@@ -47,3 +47,73 @@ controller的配置方式
 	<!-- 扫描该包下的注解 -->
 	<context:component-scan base-package="com.yzl.controller" />
 	HelloController类要加上注解@Controller 和 @RequestMapping("/hello")(此注解可以放到类前面或者方法前面)
+	
+004springmvc_jump_way1
+1、跳转的方式1.设置ModelAndView（前面的例子都是）
+    页面:视图解析器的前缀+view name+视图解析器的后缀
+	根据ModelAndView
+2、通过ServletAPI对象来实现,不需要视图配置
+	2.1通过HttpServletResponse来进行输出
+	   resp.getWriter.println("xxxx");
+	2.2 通过HttpServletResponse来进行重定向
+	    resp.sendRedirect("index.jsp");
+	2.3HttpServletRequest请求转发重定向
+	   req.getRequestDispatcher("index.jsp").req(req,resp);
+3、通过Springmvc实现转发和重定向-没有视图解析器
+   3.1 转发的实现一
+       return "index.jsp";
+   3.2 转发的实现二
+       return "forword:index.jsp"
+   3.3 重定向
+       return "redirect:index.jsp";
+4、通过Springmvc实现转发和重定向-有视图解析器
+   4.1转发的方式
+   4.2重定向
+   	重定向不会走视图解析器的。只是普通的重定向。其实重定向已经和视图解析器没有关系了。
+      注意：重定向redirect:index.jsp不需要视图解析器
+      
+ 数据的处理
+ 1、提交数据的处理
+        参数的方式传递：
+        	域名称和方法的参数名称一致即可
+      	  不一致可以用(@RequestParam("uname")String name) uname是域名称
+ 	如果提交的是一个对象
+ 	    域只把对象的属性一一列出就可：name=zhangsan&age=23
+2、将数据显示到UI层
+   2.1 通过ModelAndView-需要视图解析器（前面的例子）
+   2.2 通过ModelMap-不需要视图解析器
+       ModelMap需要作为方法的形式参数传入
+       public String hello(String name,ModelMap model){}
+   ModelAndView和ModelMap的区别
+   相同点：都可以将数据封装到表示层的页面中
+   不同点：ModelAndView可以指定跳转的视图(mv.setViewName("hello"))，而ModelMap不能
+        ModelAndView需要视图解析器，ModelMap不需要
+
+
+
+乱码及Restful
+1、乱码的解决-通过过滤器来解决：springmvc提供了CharactorEncodingFilter来解决乱码
+   web.xml<filter-name>
+   如果是get方式的乱码
+   	修改tomcat的配置解决
+   	自定义乱码解决的过滤器
+2、Restful风格的Url
+   优点：轻量级  安全 效率比较高
+   http://xxxxxx/delete/123.do
+   @RequestMapping("delete/{id}")
+   http://xxxxx/234/234/234/delete.do
+   @RequestMapping("{id1}/{id2}/{id3}/delete")
+   public String hello(@PathVariable("id") int id){id=123}
+ 	    
+ 	
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
+ 	    
