@@ -10,7 +10,6 @@ web.xml配置，默认的是寻找[servlet-name]-servlet.xml配置
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
-	
 controller的配置方式
 第一种：URL对应Bean，xml配置如下(001springmvc_hello就是这样的配置)：
 	<!-- 配置handlerMapper -->
@@ -73,26 +72,37 @@ controller的配置方式
       注意：重定向redirect:index.jsp不需要视图解析器
       
  数据的处理
- 1、提交数据的处理
+
+ 1、提交数据的处理 005springmvc_data
+ 	springmvc的Controller是单例的
         参数的方式传递：
         	域名称和方法的参数名称一致即可
-      	  不一致可以用(@RequestParam("uname")String name) uname是域名称
- 	如果提交的是一个对象
- 	    域只把对象的属性一一列出就可：name=zhangsan&age=23
+        		请求：http://localhost:8080/005springmvc_data/hello.do?name=zhangsan
+        		函数：hello(String name)
+			不一致可以用
+				请求：http://localhost:8080/005springmvc_data/hello.do?uname=zhangsan
+				函数：hello(@RequestParam("uname")String name) uname是域名称
+ 			如果提交的是一个对象,域只把对象的属性一一列出就可：name=zhangsan&age=23
+				请求：http://localhost:8080/005springmvc_data/hello.do?name=zhangsan&age=23
+				函数：hello(User user)
+				User必须有setter和getter
+				
 2、将数据显示到UI层
    2.1 通过ModelAndView-需要视图解析器（前面的例子）
    2.2 通过ModelMap-不需要视图解析器
        ModelMap需要作为方法的形式参数传入
        public String hello(String name,ModelMap model){}
    ModelAndView和ModelMap的区别
-   相同点：都可以将数据封装到表示层的页面中
-   不同点：ModelAndView可以指定跳转的视图(mv.setViewName("hello"))，而ModelMap不能
-        ModelAndView需要视图解析器，ModelMap不需要
+		相同点：都可以将数据封装显示到表示层的页面中
+		不同点：
+			ModelAndView可以指定跳转的视图(mv.setViewName("hello"))，而ModelMap不能
+        	ModelAndView需要视图解析器，ModelMap不需要
 
 
 
 乱码及Restful
-1、乱码的解决-通过过滤器来解决：springmvc提供了CharactorEncodingFilter来解决乱码
+1、乱码的解决(POST乱码的问题)-通过过滤器来解决：
+		springmvc提供了CharactorEncodingFilter来解决乱码
    web.xml<filter-name>
    如果是get方式的乱码
    	修改tomcat的配置解决
