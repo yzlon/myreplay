@@ -114,6 +114,8 @@ controller的配置方式
    http://xxxxx/234/234/234/delete.do
    @RequestMapping("{id1}/{id2}/{id3}/delete")
    public String hello(@PathVariable("id") int id){id=123}
+
+上传文件
  	    
  	
  	    
