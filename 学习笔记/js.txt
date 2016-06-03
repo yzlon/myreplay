@@ -1,0 +1,49 @@
+在使用的的变量没有用var 声明的时候，它将变成一个全局变量，用var声明的变量是一个局部变量。
+
+数组：
+	var cars=new Array();
+	cars[0]="audi";	
+	cars[1]="VW";
+	或者
+	var cars=new Array("Audi","BMW","Volvo");
+对象：
+	var person={
+	name : "yzlon",//这里是个逗号
+	age : 30//这里没有东西
+	};//这里可以有个分号
+	alert(person.name + person.age);
+	
+	字符串对象
+		var txt="Hello";
+		txt.length=5;
+		txt.indexOf();
+		txt.replace();
+		txt.search();
+		
+	创建JavaScript对象，并添加属性
+	person=new Object();
+	person.name="yzl";
+	person.age=30;
+	
+	JavaScript for/in 语句循环遍历对象的属性：
+		实例
+			var person={fname:"John",lname:"Doe",age:25};
+			for (x in person)
+			{
+				alert(x);//x是：fname lname age
+				txt=txt + person[x];
+			}
+
+JS HTML DOM
+	JavaScript 能够改变页面中的所有 HTML 元素 
+	JavaScript 能够改变页面中的所有 HTML 属性 
+	JavaScript 能够改变页面中的所有 CSS 样式 
+	JavaScript 能够对页面中的所有事件做出反应 
+	查找HTML元素
+		有三种方法来做这件事：
+			通过 id 找到 HTML 元素 
+				var x=document.getElementById("intro");
+			通过标签名找到 HTML 元素 
+				var x=document.getElementById("main");
+				var y=x.getElementsByTagName("p");
+			通过类名找到 HTML 元素 
