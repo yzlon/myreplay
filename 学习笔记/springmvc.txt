@@ -116,10 +116,20 @@ controller的配置方式
    public String hello(@PathVariable("id") int id){id=123}
 
 上传文件
- 	    
- 	
- 	    
- 	    
+	导入包：
+		com.springsource.org.apache.commons.fileupload-1.2.0.jar
+		com.springsource.org.apache.commons.io-1.4.0.jar
+	mvc.xml配置
+		<bean id="multipartResolver"
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<property name="defaultEncoding" value="utf-8" />
+			<property name="maxUploadSize" value="10485760000" />
+			<property name="maxInMemorySize" value="40960" />
+		</bean>
+		
+		Controller函数：
+			public String upload(@RequestParam(value = "file", required = false) MultipartFile file[],
+					HttpServletRequest request, ModelMap model) {}
  	    
  	    
  	    
