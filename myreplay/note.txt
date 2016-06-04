@@ -54,3 +54,20 @@ mybatisµÄmapperÖĞ #{} ºÍ${} µÄÇø±ğÊÇ£¬#{value}¶Ô×Ö·û´®»á±ä³É 'value' ¶ø$²»»á,ËùÒ
 mybatis²åÈëµÄºº×ÖÊÇÂÒÂë£¨Ö÷ÒªÊÇ±ä³É£¿£¿£¿£¿£©£¬ÔÚÅäÖÃÎÄ¼şmy.iniÖĞ£¬¼ÓÈë[mysqld]character-set-server=utf8 [client]default-character-set = utf8[mysql]default-character-set = utf8
 
 ÈİÆ÷ÀàÔÚ±éÀúµÄ¹ı³ÌÖĞ²»ÄÜÖ±½ÓÉ¾³ıÊı¾İ£¬Ö»ÄÜÓÃIteratorµÄremoveÀ´É¾³ı
+
+
+Maven Update ProjectÖ®ºójdk×ÜÊÇ±ä³É1.5£¬Ö»ÒªÔÚpom.xmlÖĞÔö¼ÓÈçÏÂ²å¼ş¼´¿É
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
