@@ -35,7 +35,7 @@ public class ProducerServiceImpl implements ProducerService {
 
 	@Override
 	public void sendMessage(final TransMessage transMessage) {
-		TransMessage message = createMessage();
+		final TransMessage message = createMessage();
 		this.jmsTemplate.send(this.destination, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
