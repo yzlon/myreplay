@@ -6,3 +6,28 @@ Scriptlet
 	定义全局变量、方法、类，不能出现其他的语句
 <%=%>
 	表达式输出，输出一个变量或一个具体的内容
+	
+page指令
+	contentType
+		设置页面的MIME指定打开文件的应用类型,可以在apache-tomcat-8.0.33\conf\web.xml查看mime的映射的类型
+			contentType="text/html;charset="GBK"
+	pageEncoding
+		指定jsp文件本身的编码
+		contentType的编码和次编码的区别，这个是指jsp页面本身的编码，上面的是服务器发给客户端的内容编码
+	errorPage/isErrorPage
+		出现错误的时候指定跳转的页面
+	import
+		引入java开发包,jar包放入apache-tomcat-8.0.33\lib目录中
+包含指令
+	静态包含:先包含，后处理
+		<%@include file="要包含文件的路径"%>
+	动态包含：先处理，后包含
+		<jsp:include page="{要包含的文件的路径|<%=表达式%>}" flush="true|false"}>
+			<jsp:param name="参数名称" value="参数内容"/>
+			... ...
+		</jsp:include>
+跳转指令：服务器跳转
+	<jsp:forward page="{要跳转的页面|<%=表达式%>}">
+		<jsp:param name="参数名称" value="参数内容"/>
+		... ...
+	</jsp:forward>
