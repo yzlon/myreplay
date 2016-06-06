@@ -1,4 +1,4 @@
-web.xml配置，默认的是寻找[servlet-name]-servlet.xml配置
+web.xml配置，默认的是寻找WEB-INF/[servlet-name]-servlet.xml配置
 可以用：
 	<servlet>
 		<servlet-name>springmvc</servlet-name>

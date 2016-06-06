@@ -31,3 +31,15 @@ page指令
 		<jsp:param name="参数名称" value="参数内容"/>
 		... ...
 	</jsp:forward>
+	
+jsp内置对象：jsp提供了9个内置对象，可以直接使用
+	pageContext-javax.servlet.jsp.PageContext:page属性范围，jsp页面容器
+	request-javax.servlet.http.HttpServletRequest：request属性范围，只在服务器端跳转有效。得到用户的请求信息
+	response-javax.servlet.http.HttpServletReponse：服务器向客户端的回应信息
+	session-javax.servlet.http.HttpSession：session属性范围，服务器和客户端跳转都有效。用来保存一个用户的信息
+	application-javax.servlet.ServletContext:application属性范围，只有重启服务器设置的属性才消失。表示所有用户的共享信息
+	config-javax.servlet.ServletConfig:服务器配置，可以取得服务器的初始化参数
+	out-javax.servlet.jsp.JspWriter
+	page-java.lang.Object
+	exception-java.lang.Throwable
+	
