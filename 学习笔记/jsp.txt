@@ -43,3 +43,42 @@ jsp内置对象：jsp提供了9个内置对象，可以直接使用
 	page-java.lang.Object
 	exception-java.lang.Throwable
 	
+Web开发的标准目录结构
+											WEB ROOT
+												|
+			-----------------------------------------------------------------
+			|					 |		|		|			|				|
+		WEB-IFN			 		jsp		js		css		images		index.jsp
+			|
+	--------------------------
+	|		|		|		|
+web.xml	   lib	 classes	tags
+
+使用javaBean：
+	<jsp:useBean id="实例化对象的名称" scope="保存范围" class="包.类名" />
+		scope:四种属性范围
+设置属性的值：
+	自动匹配：
+		<jsp:setProperty name="实例化对象的名称（id）" property="*"/>
+	指定属性：
+		<jsp:setProperty name="实例化对象的名称（id）" property="属性名"/>
+	指定参数:
+		<jsp:setProperty name="实例化对象的名称（id）" property="属性名" param="参数名称"/>
+	指定内容：
+		<jsp:setProperty name="实例化对象的名称（id）" property="属性名" value="属性的值"/>
+获取属性的值：
+	<jsp:getProperty name="实例化对象的名称（id）" property="属性名" />	
+	
+表达式语言
+	${属性名称} null时，默认输出"" 相当于 <%=属性名称%>  
+	操作的必须是属性，不能是变量！！！！！！
+四种属性范围的访问
+	${pageScope.属性}
+	${requestScope.属性}
+	${sessionScope.属性}
+	${applicationScope.属性}
+pageContext可以取得request,session,application的实例
+接收一个请求参数：
+	${param.参数名称}
+接收一个请求参数：
+	${paramVaues.参数名称}
